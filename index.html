@@ -115,6 +115,13 @@
   .ghost{display:inline-block;font-size:16px;color:var(--text);border-bottom:1px solid var(--emerald-dim);padding-bottom:3px;transition:border-color .2s ease}
   .ghost:hover{border-color:var(--emerald)}
 
+  /* countdown */
+  .countdown{display:flex;flex-wrap:wrap;gap:clamp(18px,4vw,60px)}
+  .cd-unit{display:flex;flex-direction:column;min-width:60px}
+  .cd-num{font-family:var(--serif);font-weight:500;color:var(--emerald);font-size:clamp(3rem,8vw,7rem);line-height:0.9;letter-spacing:-0.02em;font-variant-numeric:tabular-nums}
+  .cd-lbl{margin-top:12px;font-size:13px;letter-spacing:0.08em;color:var(--muted);text-transform:uppercase}
+  .cd-done{font-family:var(--serif);font-size:clamp(1.6rem,4vw,3rem);color:var(--text)}
+
   /* footer */
   footer{margin-top:var(--gap);border-top:1px solid var(--line);padding:44px 0 40px;
     display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 32px;font-size:14px;color:var(--muted)}
@@ -213,11 +220,20 @@
     </div>
   </section>
 
+  <section class="wrap reveal">
+    <div class="kicker">До конца приёма заявок</div>
+    <div id="countdown" class="countdown" data-deadline="2026-08-31T23:59:00+03:00">
+      <div class="cd-unit"><span class="cd-num" data-d>—</span><span class="cd-lbl">дней</span></div>
+      <div class="cd-unit"><span class="cd-num" data-h>—</span><span class="cd-lbl">часов</span></div>
+      <div class="cd-unit"><span class="cd-num" data-m>—</span><span class="cd-lbl">минут</span></div>
+      <div class="cd-unit"><span class="cd-num" data-s>—</span><span class="cd-lbl">секунд</span></div>
+    </div>
+  </section>
+
   <section class="cta wrap reveal">
     <h2 class="lead">Приезжайте смотреть, как оживает камень. Или встаньте к своей глыбе.</h2>
     <div class="actions">
-      <a class="btn" href="#">Следить за фестивалем</a>
-      <a class="ghost" href="#">Заявка скульптора</a>
+      <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSfEa94Naz3A-E2wT9M_oApigCol_mF6YtOM3S0eEpCa7s4uEQ/viewform" target="_blank" rel="noopener">Подать заявку</a>
       <a class="ghost" href="#">Как добраться</a>
     </div>
   </section>
@@ -240,6 +256,23 @@
     }else{
       els.forEach(function(el){el.classList.add('in')});
     }
+
+    (function(){
+      var el=document.getElementById('countdown');
+      if(!el)return;
+      var deadline=new Date(el.getAttribute('data-deadline')).getTime();
+      var dEl=el.querySelector('[data-d]'),hEl=el.querySelector('[data-h]'),mEl=el.querySelector('[data-m]'),sEl=el.querySelector('[data-s]');
+      function pad(n){return n<10?'0'+n:''+n}
+      function tick(){
+        var diff=deadline-Date.now();
+        if(diff<=0){el.innerHTML='<div class="cd-done">Приём заявок завершён</div>';return;}
+        dEl.textContent=Math.floor(diff/86400000);
+        hEl.textContent=pad(Math.floor(diff%86400000/3600000));
+        mEl.textContent=pad(Math.floor(diff%3600000/60000));
+        sEl.textContent=pad(Math.floor(diff%60000/1000));
+      }
+      tick();setInterval(tick,1000);
+    })();
   </script>
 
 </body>
