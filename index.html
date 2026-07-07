@@ -12,6 +12,20 @@
   <link rel="icon" href="assets/logo.png">
   <link rel="preload" as="image" href="assets/hero.jpg">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    .service-group { margin-top: 34px; }
+    .service-group h3 { margin-bottom: 18px; font-size: 30px; }
+    .service-photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .service-card { overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: var(--white); box-shadow: 0 18px 52px rgba(31, 38, 34, .08); }
+    .service-card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: var(--green-soft); }
+    .service-card div { display: flex; min-height: 210px; flex-direction: column; padding: 20px; }
+    .service-card h4 { margin: 0 0 10px; font-size: 22px; line-height: 1.1; }
+    .service-card p { color: var(--muted); }
+    .service-card strong { margin-top: auto; color: var(--red); font-weight: 950; }
+    .service-card .card-tag { margin-bottom: 14px; }
+    @media (max-width: 1060px) { .service-photo-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 660px) { .service-photo-grid { grid-template-columns: 1fr; } .service-card div { min-height: 0; } }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -47,18 +61,9 @@
         </div>
       </div>
       <div class="hero-facts" aria-label="Краткая информация">
-        <div>
-          <span>Часы работы</span>
-          <strong>Ежедневно 10:00-20:00</strong>
-        </div>
-        <div>
-          <span>Адрес</span>
-          <strong>п. Рускеала, ул. Мраморная 1</strong>
-        </div>
-        <div>
-          <span>Входной билет</span>
-          <strong>750 ₽</strong>
-        </div>
+        <div><span>Часы работы</span><strong>Ежедневно 10:00-20:00</strong></div>
+        <div><span>Адрес</span><strong>п. Рускеала, ул. Мраморная 1</strong></div>
+        <div><span>Входной билет</span><strong>750 ₽</strong></div>
       </div>
     </section>
 
@@ -87,24 +92,9 @@
         <a class="text-link" href="#contacts">Уточнить перед поездкой</a>
       </div>
       <div class="quick-grid">
-        <article>
-          <span>01</span>
-          <h3>Вход в парк</h3>
-          <p>Входной билет подразумевает посещение Горного Парка Рускеала без получения дополнительных услуг.</p>
-          <strong>Полный билет 750 ₽</strong>
-        </article>
-        <article>
-          <span>02</span>
-          <h3>Льготные категории</h3>
-          <p>Студенты, школьники, лица 60+, члены РГО, жители Сортавальского округа и другие категории предъявляют подтверждающий документ.</p>
-          <strong>от 400 ₽</strong>
-        </article>
-        <article>
-          <span>03</span>
-          <h3>Экскурсии</h3>
-          <p>Количество билетов на экскурсии ограничено. Стоимость входного билета не входит в стоимость экскурсии.</p>
-          <strong>от 950 ₽/чел</strong>
-        </article>
+        <article><span>01</span><h3>Вход в парк</h3><p>Входной билет подразумевает посещение Горного Парка Рускеала без получения дополнительных услуг.</p><strong>Полный билет 750 ₽</strong></article>
+        <article><span>02</span><h3>Льготные категории</h3><p>Студенты, школьники, лица 60+, члены РГО, жители Сортавальского округа и другие категории предъявляют подтверждающий документ.</p><strong>от 400 ₽</strong></article>
+        <article><span>03</span><h3>Экскурсии</h3><p>Количество билетов на экскурсии ограничено. Стоимость входного билета не входит в стоимость экскурсии.</p><strong>от 950 ₽/чел</strong></article>
       </div>
       <div class="notice">
         <p>Бесплатные входные билеты для отдельных категорий гостей приобретаются только в кассах. Перед поездкой уточняйте актуальность цен, расписание и доступность услуг по контактам парка.</p>
@@ -115,233 +105,111 @@
       <div class="section-head">
         <div>
           <p class="eyebrow dark">Экскурсии и развлечения</p>
-          <h2>Главные маршруты</h2>
+          <h2>Все услуги с фотографиями</h2>
         </div>
         <a class="text-link" href="#contacts">Уточнить доступность</a>
       </div>
-      <div class="feature-routes">
-        <article class="route-card image-card">
-          <img src="assets/canyon.jpg" alt="Мраморный каньон" loading="lazy">
-          <div>
-            <span class="card-tag">Экскурсия</span>
-            <h3>Мраморный каньон</h3>
-            <ul>
-              <li>Длительность 1 ч 15 мин</li>
-              <li>Дистанция 1600 м</li>
-              <li>Без возрастных ограничений</li>
-            </ul>
-            <strong>950 ₽/чел</strong>
-            <a href="#contacts">Уточнить маршрут</a>
-          </div>
-        </article>
-        <article class="route-card image-card accent-card">
-          <img src="assets/underground.jpg" alt="Подземная Рускеала" loading="lazy">
-          <div>
-            <span class="card-tag hit">Хит</span>
-            <h3>Подземная Рускеала</h3>
-            <ul>
-              <li>Продолжительность до 60 мин.</li>
-              <li>Дистанция 850 м</li>
-              <li>Возрастное ограничение 7+</li>
-            </ul>
-            <strong>2500 ₽/чел</strong>
-            <a href="#contacts">Уточнить маршрут</a>
-          </div>
-        </article>
-        <article class="route-card image-card">
-          <img src="assets/aerial.jpg" alt="Дорогой горных мастеров" loading="lazy">
-          <div>
-            <span class="card-tag">Экскурсия</span>
-            <h3>Дорогой горных мастеров</h3>
-            <ul>
-              <li>Длительность 1 ч 45 мин</li>
-              <li>Дистанция 2600 м</li>
-              <li>Без возрастных ограничений</li>
-            </ul>
-            <strong>1150 ₽/чел</strong>
-            <a href="#contacts">Уточнить маршрут</a>
-          </div>
-        </article>
+
+      <div class="service-group">
+        <h3>Экскурсии</h3>
+        <div class="service-photo-grid">
+          <article class="service-card"><img src="https://ruskeala.ru/assets/images/virtual.jpg" alt="Виртуальная экскурсия" loading="lazy"><div><span class="card-tag">Экскурсия</span><h4>Виртуальная экскурсия</h4><p>Наземная часть парка в виртуальном формате.</p><strong>650 ₽/чел</strong></div></article>
+          <article class="service-card"><img src="https://ruskeala.ru/assets/images/child-virtual.jpg" alt="Детская виртуальная экскурсия" loading="lazy"><div><span class="card-tag">Детям</span><h4>Детская виртуальная экскурсия</h4><p>3D-тур с хранителями парка.</p><strong>550 ₽/чел</strong></div></article>
+          <article class="service-card"><img src="https://ruskeala.ru/assets/images/expedition-gallery1-1.png" alt="Историко-культурный центр" loading="lazy"><div><span class="card-tag hit">Хит</span><h4>Историко-культурный центр</h4><p>До 20 мин., группа до 20 чел., 0+.</p><strong>300 ₽/чел</strong></div></article>
+          <article class="service-card"><img src="assets/underground.jpg" alt="Подземная Рускеала" loading="lazy"><div><span class="card-tag hit">Хит</span><h4>Подземная Рускеала</h4><p>До 60 мин., дистанция 850 м, возрастное ограничение 7+.</p><strong>2500 ₽/чел</strong></div></article>
+          <article class="service-card"><img src="assets/aerial.jpg" alt="Дорогой горных мастеров" loading="lazy"><div><span class="card-tag">Экскурсия</span><h4>Дорогой горных мастеров</h4><p>Длительность 1 ч 45 мин, дистанция 2600 м.</p><strong>1150 ₽/чел</strong></div></article>
+          <article class="service-card"><img src="assets/canyon.jpg" alt="Мраморный каньон" loading="lazy"><div><span class="card-tag">Экскурсия</span><h4>Мраморный каньон</h4><p>Длительность 1 ч 15 мин, дистанция 1600 м.</p><strong>950 ₽/чел</strong></div></article>
+        </div>
       </div>
-      <div class="compact-routes" aria-label="Другие активности">
-        <article><h3>Историко-культурный центр</h3><p>До 20 мин., группа до 20 чел., 0+</p><strong>300 ₽/чел</strong></article>
-        <article><h3>Виртуальная экскурсия</h3><p>Наземная часть парка в виртуальном формате</p><strong>650 ₽/чел</strong></article>
-        <article><h3>Детская виртуальная экскурсия</h3><p>3D-тур с хранителями парка</p><strong>550 ₽/чел</strong></article>
-        <article><h3>Водная прогулка на лодке</h3><p>40 минут, до 4 человек, 3+</p><strong>2200 ₽</strong></article>
-        <article><h3>Водная прогулка на платформе</h3><p>30 мин., до 10 человек, 3+</p><strong>600 ₽/чел</strong></article>
-        <article><h3>Активный отдых</h3><p>Квадроциклы, zip-line, тарзанка, дайвинг, гигантские качели</p><strong>от 2000 ₽</strong></article>
+
+      <div class="service-group">
+        <h3>Активный отдых</h3>
+        <div class="service-photo-grid">
+          <article class="service-card"><img src="https://ruskeala.ru/assets/images/expedition-gallery6-1.png" alt="Водная прогулка на лодке" loading="lazy"><div><span class="card-tag">Активный отдых</span><h4>Водная прогулка на лодке</h4><p>40 минут, до 4 человек, возрастное ограничение 3+.</p><strong>2200 ₽</strong></div></article>
+          <article class="service-card"><img src="https://ruskeala.ru/assets/images/expedition-gallery5-1.png" alt="Водная прогулка на платформе" loading="lazy"><div><span class="card-tag">Активный отдых</span><h4>Водная прогулка на платформе</h4><p>30 мин., вместимость платформы до 10 чел., 3+.</p><strong>600 ₽/чел</strong></div></article>
+          <article class="service-card"><img src="https://ruskeala.ru/assets/images/expedition-gallery7-1.png" alt="Трансфер до водопадов Ахинкоски" loading="lazy"><div><span class="card-tag">Активный отдых</span><h4>Трансфер до водопадов Ахинкоски</h4><p>Время в пути в одну сторону — 10 минут. Отведенное время на прогулку — 1 час.</p><strong>250 ₽/чел</strong></div></article>
+          <article class="service-card"><img src="https://ruskeala.ru/assets/images/expedition-8-2.png" alt="Катание на квадроциклах" loading="lazy"><div><span class="card-tag">Активный отдых</span><h4>Катание на квадроциклах</h4><p>Продолжительность от 1 часа, дистанция от 6 км до 100 км, 16+.</p><strong>8000 ₽/2 чел</strong></div></article>
+          <article class="service-card"><img src="https://ruskeala.ru/assets/images/expedition-gallery9-1.png" alt="Троллей Zip-line" loading="lazy"><div><span class="card-tag">Активный отдых</span><h4>Троллей (Zip-line)</h4><p>Дистанция 400 м, максимальный вес 120 кг, возрастное ограничение 7+.</p><strong>3000 ₽/чел</strong></div></article>
+          <article class="service-card"><img src="https://ruskeala.ru/assets/images/expedition-gallery10-1.png" alt="Тарзанка" loading="lazy"><div><span class="card-tag">Активный отдых</span><h4>Тарзанка</h4><p>Прыжок с веревкой. Высота 20 м, возрастное ограничение 7+.</p><strong>4000 ₽/чел</strong></div></article>
+          <article class="service-card"><img src="https://ruskeala.ru/assets/images/expedition-gallery11-1.png" alt="Дайвинг" loading="lazy"><div><span class="card-tag">Активный отдых</span><h4>Дайвинг</h4><p>Погружения в Мраморном каньоне.</p><strong>9000 ₽/чел</strong></div></article>
+          <article class="service-card"><img src="https://ruskeala.ru/assets/images/expedition-12-1.png" alt="Гигантские качели" loading="lazy"><div><span class="card-tag">Активный отдых</span><h4>Гигантские качели</h4><p>Панорамные качели над Светлым озером, возрастное ограничение 7+.</p><strong>2000 ₽/чел</strong></div></article>
+          <article class="service-card"><img src="https://ruskeala.ru/assets/images/expedition-13-1.png" alt="Водные прогулки на озере Светлое" loading="lazy"><div><span class="card-tag">Активный отдых</span><h4>Водные прогулки на озере Светлое</h4><p>Прокат SUP-бордов, байдарок, рафтов.</p><strong>от 500 ₽</strong></div></article>
+          <article class="service-card"><img src="https://ruskeala.ru/assets/images/expedition-14.png" alt="Аудиогид" loading="lazy"><div><span class="card-tag">Активный отдых</span><h4>Аудиогид</h4><p>Личный экскурсовод для самостоятельного путешествия.</p><strong>500 ₽</strong></div></article>
+        </div>
       </div>
     </section>
 
-    <section class="statement">
-      <div>
-        <p>Мрамору Рускеала около 2 миллиардов лет.</p>
-        <span>Докембрийские породы сформированы еще до появления сложных форм жизни на Земле.</span>
-      </div>
-    </section>
+    <section class="statement"><div><p>Мрамору Рускеала около 2 миллиардов лет.</p><span>Докембрийские породы сформированы еще до появления сложных форм жизни на Земле.</span></div></section>
 
     <section class="section family" id="family">
-      <div>
-        <p class="eyebrow dark">Рускеала детям</p>
-        <h2>Маршрут для семьи</h2>
-        <p>На территории выделены детская инфраструктура, Марморики и детская виртуальная экскурсия. Для маленьких гостей есть формат 3D-тура, а входной билет дает доступ к детской игровой территории.</p>
-      </div>
+      <div><p class="eyebrow dark">Рускеала детям</p><h2>Маршрут для семьи</h2><p>На территории выделены детская инфраструктура, Марморики и детская виртуальная экскурсия. Для маленьких гостей есть формат 3D-тура, а входной билет дает доступ к детской игровой территории.</p></div>
       <div class="family-grid">
-        <article>
-          <h3>Детская виртуальная экскурсия</h3>
-          <p>3D-тур с хранителями парка.</p>
-          <strong>550 ₽/чел</strong>
-        </article>
-        <article>
-          <h3>Детская инфраструктура</h3>
-          <p>Игровая территория входит в самостоятельное посещение парка по входному билету.</p>
-        </article>
-        <article>
-          <h3>Возрастные ограничения</h3>
-          <p>Для экскурсии «Подземная Рускеала» указано ограничение 7+, для прогулок по воде - 3+.</p>
-        </article>
+        <article><h3>Детская виртуальная экскурсия</h3><p>3D-тур с хранителями парка.</p><strong>550 ₽/чел</strong></article>
+        <article><h3>Детская инфраструктура</h3><p>Игровая территория входит в самостоятельное посещение парка по входному билету.</p></article>
+        <article><h3>Возрастные ограничения</h3><p>Для экскурсии «Подземная Рускеала» указано ограничение 7+, для прогулок по воде - 3+.</p></article>
       </div>
     </section>
 
     <section class="section visit" id="visit">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow dark">Как добраться</p>
-          <h2>Маршрут через Сортавала</h2>
-        </div>
-        <a class="text-link" href="#contacts">Уточнить дорогу</a>
-      </div>
+      <div class="section-head"><div><p class="eyebrow dark">Как добраться</p><h2>Маршрут через Сортавала</h2></div><a class="text-link" href="#contacts">Уточнить дорогу</a></div>
       <div class="visit-grid">
-        <article>
-          <h3>Поездом из Санкт-Петербурга</h3>
-          <p>Поезд отправляется с Финляндского вокзала до Сортавала. От Сортавала до парка: автобус, службы такси или ретропоезд.</p>
-        </article>
-        <article>
-          <h3>Автобусом из Санкт-Петербурга</h3>
-          <p>Отправление от автовокзала «Северный» у метро Девяткино. Время в пути до Сортавала ориентировочно 5-6 часов.</p>
-        </article>
-        <article>
-          <h3>На автомобиле</h3>
-          <p>Маршрут: Санкт-Петербург - КАД - Приозерск - А-121 - Сортавала - Рускеала. Расстояние 310 км, ориентир 4-5 часов.</p>
-        </article>
-        <article>
-          <h3>Из Москвы</h3>
-          <p>Маршрут идет через Санкт-Петербург и Сортавала. Путь на автомобиле: примерно 1300-1400 км.</p>
-        </article>
+        <article><h3>Поездом из Санкт-Петербурга</h3><p>Поезд отправляется с Финляндского вокзала до Сортавала. От Сортавала до парка: автобус, службы такси или ретропоезд.</p></article>
+        <article><h3>Автобусом из Санкт-Петербурга</h3><p>Отправление от автовокзала «Северный» у метро Девяткино. Время в пути до Сортавала ориентировочно 5-6 часов.</p></article>
+        <article><h3>На автомобиле</h3><p>Маршрут: Санкт-Петербург - КАД - Приозерск - А-121 - Сортавала - Рускеала. Расстояние 310 км, ориентир 4-5 часов.</p></article>
+        <article><h3>Из Москвы</h3><p>Маршрут идет через Санкт-Петербург и Сортавала. Путь на автомобиле: примерно 1300-1400 км.</p></article>
       </div>
-      <div class="coords">
-        <span>GPS-координаты</span>
-        <strong>61.944603, 30.581341</strong>
-        <a class="text-link" href="#contacts">Связаться с парком</a>
-      </div>
+      <div class="coords"><span>GPS-координаты</span><strong>61.944603, 30.581341</strong><a class="text-link" href="#contacts">Связаться с парком</a></div>
     </section>
 
     <section class="section food" id="food">
-      <div class="food-image">
-        <img src="assets/cafe.jpg" alt="Кафе в Горном Парке Рускеала" loading="lazy">
-      </div>
-      <div class="food-content">
-        <p class="eyebrow dark">Организация питания</p>
-        <h2>Кафе на территории парка</h2>
-        <p>В парке работают точки питания для отдыха до или после прогулки: горячие и холодные напитки, выпечка, завтраки, комплексные обеды, блюда европейской и карельской кухни.</p>
-        <ul class="food-list">
-          <li>Кафе «Лето»</li>
-          <li>Кафе «Русколка»</li>
-          <li>Кафе «Колмас Бургер»</li>
-          <li>Кафе «У Провала»</li>
-          <li>Кафе «Кахвила»</li>
-        </ul>
-      </div>
+      <div class="food-image"><img src="assets/cafe.jpg" alt="Кафе в Горном Парке Рускеала" loading="lazy"></div>
+      <div class="food-content"><p class="eyebrow dark">Организация питания</p><h2>Кафе на территории парка</h2><p>В парке работают точки питания для отдыха до или после прогулки: горячие и холодные напитки, выпечка, завтраки, комплексные обеды, блюда европейской и карельской кухни.</p><ul class="food-list"><li>Кафе «Лето»</li><li>Кафе «Русколка»</li><li>Кафе «Колмас Бургер»</li><li>Кафе «У Провала»</li><li>Кафе «Кахвила»</li></ul></div>
     </section>
 
     <section class="section practical" id="rules">
-      <div>
-        <p class="eyebrow dark">Перед визитом</p>
-        <h2>Правила, афиша и связь</h2>
-      </div>
+      <div><p class="eyebrow dark">Перед визитом</p><h2>Правила, афиша и связь</h2></div>
       <div class="practical-grid">
-        <article>
-          <h3>Правила парка</h3>
-          <p>Приобретая входной билет, гость подтверждает, что ознакомился с правилами Парка и обязуется их соблюдать.</p>
-          <a href="#contacts">Уточнить правила</a>
-        </article>
-        <article>
-          <h3>Афиша</h3>
-          <p>Актуальные события и расписание мероприятий лучше уточнять перед поездкой по контактам парка.</p>
-          <a href="#contacts">Уточнить афишу</a>
-        </article>
-        <article>
-          <h3>Обратная связь</h3>
-          <p>Для уточнения деталей поездки используйте телефон, почту, социальные сети или Telegram-bot.</p>
-          <a href="#contacts">Перейти к контактам</a>
-        </article>
+        <article><h3>Правила парка</h3><p>Приобретая входной билет, гость подтверждает, что ознакомился с правилами Парка и обязуется их соблюдать.</p><a href="#contacts">Уточнить правила</a></article>
+        <article><h3>Афиша</h3><p>Актуальные события и расписание мероприятий лучше уточнять перед поездкой по контактам парка.</p><a href="#contacts">Уточнить афишу</a></article>
+        <article><h3>Обратная связь</h3><p>Для уточнения деталей поездки используйте телефон, почту, социальные сети или Telegram-bot.</p><a href="#contacts">Перейти к контактам</a></article>
       </div>
     </section>
 
     <section class="section faq" id="faq">
-      <div>
-        <p class="eyebrow dark">FAQ</p>
-        <h2>Коротко перед визитом</h2>
-      </div>
+      <div><p class="eyebrow dark">FAQ</p><h2>Коротко перед визитом</h2></div>
       <div class="faq-list">
-        <article>
-          <h3>Что входит во входной билет?</h3>
-          <p>Посещение Горного Парка Рускеала без получения дополнительных услуг.</p>
-        </article>
-        <article>
-          <h3>Можно ли гулять самостоятельно?</h3>
-          <p>Да, в парке есть оборудованные дорожки и видовые площадки.</p>
-        </article>
-        <article>
-          <h3>Где купить билет?</h3>
-          <p>Покупку и наличие билетов нужно уточнять по контактам парка. Отдельные бесплатные и льготные билеты оформляются в кассах.</p>
-        </article>
-        <article>
-          <h3>Нужны ли документы для льгот?</h3>
-          <p>Да, для категорий гостей с правом на льготный билет нужен подтверждающий документ.</p>
-        </article>
+        <article><h3>Что входит во входной билет?</h3><p>Посещение Горного Парка Рускеала без получения дополнительных услуг.</p></article>
+        <article><h3>Можно ли гулять самостоятельно?</h3><p>Да, в парке есть оборудованные дорожки и видовые площадки.</p></article>
+        <article><h3>Где купить билет?</h3><p>Покупку и наличие билетов нужно уточнять по контактам парка. Отдельные бесплатные и льготные билеты оформляются в кассах.</p></article>
+        <article><h3>Нужны ли документы для льгот?</h3><p>Да, для категорий гостей с правом на льготный билет нужен подтверждающий документ.</p></article>
       </div>
     </section>
 
     <section class="section contacts" id="contacts">
-      <div>
-        <p class="eyebrow dark">Контакты</p>
-        <h2>Республика Карелия, г. Сортавала, п. Рускеала, ул. Мраморная 1</h2>
-      </div>
+      <div><p class="eyebrow dark">Контакты</p><h2>Республика Карелия, г. Сортавала, п. Рускеала, ул. Мраморная 1</h2></div>
       <div class="contact-panel">
         <a href="tel:+79216215050">+7 (921) 621-50-50</a>
         <a href="mailto:ruskeala@kolmas.ru">ruskeala@kolmas.ru</a>
         <span>Парк: ежедневно 10:00-20:00</span>
         <span>Офис: пн-пт 10:00-17:00</span>
-        <div class="socials">
-          <a href="https://vk.com/ruskealapark">VK</a>
-          <a href="https://max.ru/id1007014533_biz">MAX</a>
-          <a href="https://t.me/ruskeala_official_bot">Telegram-bot</a>
-        </div>
+        <div class="socials"><a href="https://vk.com/ruskealapark">VK</a><a href="https://max.ru/id1007014533_biz">MAX</a><a href="https://t.me/ruskeala_official_bot">Telegram-bot</a></div>
       </div>
     </section>
 
     <section class="section missing">
-      <div>
-        <p class="eyebrow dark">Нужно уточнить у владельца</p>
-        <h2>Данные, которые нельзя додумывать</h2>
-      </div>
+      <div><p class="eyebrow dark">Нужно уточнить у владельца</p><h2>Данные, которые нельзя додумывать</h2></div>
       <ul>
         <li>Нужна ли форма обратной связи прямо на лендинге и какая политика обработки данных должна быть привязана к этому домену.</li>
         <li>Какие сезонные ограничения и временно недоступные активности показывать на лендинге.</li>
         <li>Как должна работать покупка билетов: через форму на лендинге, телефон, кассу, отдельную систему или Telegram-bot.</li>
-        <li>Нужны ли отдельные внутренние блоки под афишу, правила, детский раздел и маршруты или оставляем быстрый лендинг.</li>
+        <li>Нужно ли перенести фотографии в репозиторий как локальные файлы, чтобы лендинг не загружал изображения с внешнего домена.</li>
       </ul>
     </section>
   </main>
 
   <footer class="footer">
     <p>2025, Горный Парк Рускеала © Все права защищены.</p>
-    <div>
-      <a href="#tickets">Билеты</a>
-      <a href="#routes">Экскурсии</a>
-      <a href="#contacts">Контакты</a>
-    </div>
+    <div><a href="#tickets">Билеты</a><a href="#routes">Экскурсии</a><a href="#contacts">Контакты</a></div>
   </footer>
 </body>
 </html>
