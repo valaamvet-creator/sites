@@ -216,5 +216,45 @@
     <p>2025, Горный Парк Рускеала © Все права защищены.</p>
     <div><a href="#routes">Услуги</a><a href="#contacts">Контакты</a></div>
   </footer>
+  <script>
+    (() => {
+      const track = document.querySelector(".food-track");
+      const slides = [...document.querySelectorAll(".food-slide")];
+      const dots = [...document.querySelectorAll(".food-dots a")];
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      if (!track || slides.length === 0 || dots.length === 0) return;
+
+      const setActiveDot = (id) => {
+        dots.forEach((dot) => dot.classList.toggle("is-active", dot.getAttribute("href") === `#${id}`));
+      };
+
+      dots.forEach((dot) => {
+        dot.addEventListener("click", (event) => {
+          const target = document.querySelector(dot.getAttribute("href"));
+          if (!target) return;
+
+          event.preventDefault();
+          target.scrollIntoView({
+            behavior: reducedMotion ? "auto" : "smooth",
+            block: "nearest",
+            inline: "start"
+          });
+          setActiveDot(target.id);
+        });
+      });
+
+      const observer = new IntersectionObserver((entries) => {
+        const current = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (current) setActiveDot(current.target.id);
+      }, { root: track, threshold: [0.55, 0.75] });
+
+      slides.forEach((slide) => observer.observe(slide));
+      setActiveDot(slides[0].id);
+    })();
+  </script>
 </body>
 </html>
