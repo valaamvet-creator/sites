@@ -1,279 +1,163 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Каменотёсы — международный фестиваль каменной скульптуры · Большой мраморный каньон</title>
-<meta name="description" content="Международный фестиваль каменотёсов в Большом мраморном каньоне. 19 сентября — 1 октября 2026, Карелия. Мастера камня со всего мира тешут карельский мрамор под открытым небом.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#0d0f0e;
-    --bg2:#141815;
-    --line:#2a2f2a;
-    --text:#e9e4da;
-    --muted:#9a978c;
-    --emerald:#3aa981;
-    --emerald-dim:#2b7c5f;
-    --stone:#c2b7a3;
-    --serif:'Playfair Display', Georgia, 'Times New Roman', serif;
-    --sans:'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
-    --pad:clamp(20px,5vw,72px);
-    --gap:clamp(96px,15vw,220px);
-    --maxw:1360px;
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:400;line-height:1.5;overflow-x:hidden}
-  ::selection{background:var(--emerald);color:#07110c}
-  a{color:inherit;text-decoration:none}
-  :focus-visible{outline:2px solid var(--emerald);outline-offset:4px}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
-  .eyebrow{font-family:var(--sans);font-size:13px;letter-spacing:0.26em;text-transform:uppercase;color:var(--emerald)}
-
-  /* nav */
-  .nav{position:absolute;top:0;left:0;right:0;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:26px var(--pad)}
-  .nav .brand{font-family:var(--serif);font-size:22px;letter-spacing:0.01em}
-  .nav .n-meta{font-size:13px;letter-spacing:0.06em;color:var(--muted)}
-  @media(max-width:640px){.nav .n-meta{display:none}}
-
-  /* hero */
-  .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:140px 0 64px}
-  .hero::before{content:"";position:absolute;inset:0;z-index:0;
-    background:
-      radial-gradient(120% 80% at 50% -10%, rgba(58,169,129,0.14), transparent 55%),
-      radial-gradient(90% 60% at 80% 120%, rgba(58,169,129,0.06), transparent 60%);
-    pointer-events:none}
-  .hero .wrap{position:relative;z-index:1}
-  .hero .eyebrow{margin-bottom:clamp(26px,4vw,42px)}
-  .hero h1{font-family:var(--serif);font-weight:500;
-    font-size:clamp(3.2rem,11vw,9rem);line-height:0.96;letter-spacing:-0.02em;text-wrap:balance}
-  .hero .rule{width:min(340px,60vw);height:1px;background:linear-gradient(90deg,var(--emerald),transparent);margin:clamp(30px,4vw,48px) 0}
-  .hero .sub{font-family:var(--serif);font-style:italic;font-weight:400;
-    font-size:clamp(20px,2.6vw,32px);line-height:1.32;color:var(--stone);max-width:26ch;text-wrap:balance}
-  .hero .facts{margin-top:clamp(40px,6vw,72px);display:flex;flex-wrap:wrap;gap:10px 40px;font-size:14px;letter-spacing:0.04em;color:var(--muted)}
-  .hero .facts b{color:var(--text);font-weight:500}
-
-  .reveal{transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
-  .js .reveal{opacity:0;transform:translateY(20px)}
-  .js .reveal.in{opacity:1;transform:none}
-  .hero .h-a{opacity:0;transform:translateY(18px);animation:rise 1s cubic-bezier(.2,.7,.2,1) forwards}
-  .hero .h-a.d1{animation-delay:.06s}.hero .h-a.d2{animation-delay:.2s}
-  .hero .h-a.d3{animation-delay:.36s}.hero .h-a.d4{animation-delay:.52s}
-  @keyframes rise{to{opacity:1;transform:none}}
-
-  section{margin-top:var(--gap)}
-  .lead{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,5.4vw,4.6rem);line-height:1.08;letter-spacing:-0.01em;text-wrap:balance;max-width:16ch}
-  .lead .em{color:var(--emerald)}
-  .prose{font-size:clamp(17px,1.5vw,19px);line-height:1.65;color:var(--muted);max-width:56ch}
-  .prose strong{color:var(--text);font-weight:500}
-
-  .split{display:grid;grid-template-columns:1fr;gap:clamp(28px,4vw,64px)}
-  @media(min-width:900px){.split{grid-template-columns:1fr 1fr;align-items:start}}
-
-  /* numbers */
-  .figs{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,56px) clamp(24px,3vw,40px)}
-  @media(min-width:820px){.figs{grid-template-columns:repeat(4,1fr)}}
-  .fig .n{font-family:var(--serif);font-weight:500;color:var(--emerald);font-size:clamp(3.4rem,7vw,6rem);line-height:0.9;letter-spacing:-0.01em}
-  .fig .c{margin-top:14px;font-size:14px;letter-spacing:0.04em;color:var(--muted);line-height:1.4}
-
-  /* masters */
-  .kicker{font-family:var(--sans);font-size:13px;letter-spacing:0.22em;text-transform:uppercase;color:var(--emerald);margin-bottom:clamp(28px,4vw,44px)}
-  .countries{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,5.6vw,4.4rem);line-height:1.18;letter-spacing:-0.01em}
-  .countries .dot{color:var(--emerald-dim);padding:0 .18em}
-
-  /* programme — the emerald vein */
-  .vein{position:relative;margin-top:clamp(40px,5vw,56px);padding-left:clamp(24px,5vw,64px)}
-  .vein::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;
-    background:linear-gradient(180deg,var(--emerald),var(--emerald-dim) 70%,transparent)}
-  .stop{position:relative;padding:clamp(22px,3vw,34px) 0;border-bottom:1px solid var(--line)}
-  .stop:first-child{padding-top:0}
-  .stop:last-child{border-bottom:0}
-  .stop::before{content:"";position:absolute;left:calc(-1 * clamp(24px,5vw,64px) + 1px);top:clamp(26px,3vw,38px);
-    width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--emerald);transform:translateX(-5px)}
-  .stop .st-day{font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:var(--emerald);margin-bottom:10px}
-  .stop .st-grid{display:grid;grid-template-columns:1fr;gap:6px 32px}
-  @media(min-width:760px){.stop .st-grid{grid-template-columns:210px 1fr;align-items:baseline}}
-  .stop .st-date{font-family:var(--serif);font-size:clamp(24px,3vw,34px);letter-spacing:-0.01em}
-  .stop .st-what{font-size:clamp(16px,1.6vw,18px);line-height:1.55;color:var(--muted);max-width:48ch}
-
-  /* manifesto band */
-  .band{margin-top:var(--gap);background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:clamp(80px,13vw,190px) 0}
-  .band .quote{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(2rem,6vw,5rem);line-height:1.14;letter-spacing:-0.01em;text-wrap:balance;max-width:20ch}
-  .band .quote .em{font-style:normal;color:var(--emerald)}
-  .band .by{margin-top:clamp(30px,4vw,48px);font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted)}
-
-  /* cta */
-  .cta{margin-top:var(--gap)}
-  .cta .lead{margin-bottom:clamp(36px,5vw,56px)}
-  .actions{display:flex;flex-wrap:wrap;gap:18px 20px;align-items:center}
-  .btn{display:inline-block;background:var(--emerald);color:#07110c;font-weight:500;font-size:16px;
-    padding:16px 30px;letter-spacing:0.01em;transition:transform .2s ease,background .2s ease}
-  .btn:hover{background:#48c295;transform:translateY(-2px)}
-  .ghost{display:inline-block;font-size:16px;color:var(--text);border-bottom:1px solid var(--emerald-dim);padding-bottom:3px;transition:border-color .2s ease}
-  .ghost:hover{border-color:var(--emerald)}
-
-  /* countdown */
-  .countdown{display:flex;flex-wrap:wrap;gap:clamp(18px,4vw,60px)}
-  .cd-unit{display:flex;flex-direction:column;min-width:60px}
-  .cd-num{font-family:var(--serif);font-weight:500;color:var(--emerald);font-size:clamp(3rem,8vw,7rem);line-height:0.9;letter-spacing:-0.02em;font-variant-numeric:tabular-nums}
-  .cd-lbl{margin-top:12px;font-size:13px;letter-spacing:0.08em;color:var(--muted);text-transform:uppercase}
-  .cd-done{font-family:var(--serif);font-size:clamp(1.6rem,4vw,3rem);color:var(--text)}
-
-  /* footer */
-  footer{margin-top:var(--gap);border-top:1px solid var(--line);padding:44px 0 40px;
-    display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 32px;font-size:14px;color:var(--muted)}
-  footer .brand{font-family:var(--serif);font-size:18px;color:var(--text)}
-  footer .l{display:flex;flex-wrap:wrap;gap:6px 24px}
-
-  @media(prefers-reduced-motion:reduce){
-    html{scroll-behavior:auto}
-    .reveal{opacity:1;transform:none;transition:none}
-    .hero .h-a{animation:none;opacity:1;transform:none}
-    .btn:hover,.ghost:hover{transform:none}
-  }
-</style>
-<script>document.documentElement.classList.add('js')</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Горный Парк Рускеала</title>
+  <meta name="description" content="Горный Парк Рускеала: мраморный каньон, подземные штольни, экскурсии, кафе и контакты парка в Карелии.">
+  <meta property="og:title" content="Горный Парк Рускеала">
+  <meta property="og:description" content="Республика Карелия, г. Сортавала, п. Рускеала, ул. Мраморная 1. Ежедневно 10:00-20:00.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/hero.jpg">
+  <link rel="icon" href="assets/logo.png">
+  <link rel="preload" as="image" href="assets/hero.jpg">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-  <nav class="nav">
-    <div class="brand">Каменотёсы</div>
-    <div class="n-meta">Большой мраморный каньон · Карелия</div>
-  </nav>
-
-  <header class="hero">
-    <div class="wrap">
-      <div class="eyebrow h-a d1">19 сентября — 1 октября 2026</div>
-      <h1 class="h-a d2">Каменотёсы</h1>
-      <div class="rule h-a d3"></div>
-      <p class="sub h-a d3">Скульпторы со всего мира высекают из карельского мрамора то, что дремало в нём миллионы лет — под открытым небом, на глазах у всех.</p>
-      <div class="facts h-a d4">
-        <span><b>Международный фестиваль</b> каменной скульптуры</span>
-        <span><b>13 дней</b> живой работы</span>
-        <span><b>Карелия</b>, Россия</span>
-      </div>
-    </div>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Горный Парк Рускеала">
+      <img src="assets/logo.png" alt="">
+      <span>
+        <strong>Горный Парк Рускеала</strong>
+        <small>Республика Карелия</small>
+      </span>
+    </a>
+    <nav aria-label="Основная навигация">
+      <a href="#excursions">Экскурсии</a>
+      <a href="#about">О парке</a>
+      <a href="#food">Кафе</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <a class="header-phone" href="tel:+79216215050">+7 (921) 621-50-50</a>
   </header>
 
-  <main>
-    <section class="wrap reveal">
-      <div class="split">
-        <h2 class="lead">За тринадцать дней глыба мрамора становится <span class="em">скульптурой</span> — резцом, а не станком.</h2>
-        <p class="prose">В Большой мраморный каньон съезжаются скульпторы из девяти стран. Каждому достаётся своя глыба карельского мрамора — необработанная, тяжёлая, немая. Дальше только резец, киянка и замысел. <strong>Ни павильонов, ни кулис:</strong> работа идёт под открытым небом, и любой гость слышит звон стали о камень и видит, как из белой породы проступает то лицо, то зверь, то волна. К закрытию скульптуры остаются здесь навсегда — становятся частью каньона.</p>
+  <main id="top">
+    <section class="hero" aria-label="Горный Парк Рускеала">
+      <div class="hero-media" role="img" aria-label="Горный Парк Рускеала"></div>
+      <div class="hero-content">
+        <p class="eyebrow">п. Рускеала, ул. Мраморная 1</p>
+        <h1>Горный Парк Рускеала</h1>
+        <p class="lead">Туристическая мекка, появившаяся на месте заброшенного мраморного месторождения.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="https://order.ruskeala.ru/event/C10250895E2F99D34DC45FD0438DEF33BA7190B7">Купить билет</a>
+          <a class="button ghost" href="#excursions">Смотреть экскурсии</a>
+        </div>
+      </div>
+      <div class="hero-facts" aria-label="Краткая информация">
+        <div><span>Ежедневно</span><strong>10:00-20:00</strong></div>
+        <div><span>Адрес</span><strong>Сортавала, п. Рускеала</strong></div>
+        <div><span>Билет</span><strong>от 650 ₽</strong></div>
       </div>
     </section>
 
-    <section class="wrap reveal">
-      <div class="figs">
-        <div class="fig"><div class="n">14</div><div class="c">каменотёсов</div></div>
-        <div class="fig"><div class="n">9</div><div class="c">стран-участниц</div></div>
-        <div class="fig"><div class="n">13</div><div class="c">дней работы</div></div>
-        <div class="fig"><div class="n">∞</div><div class="c">скульптур остаются в каньоне</div></div>
-      </div>
-    </section>
-
-    <section class="wrap reveal">
-      <div class="kicker">Мастера · 9 стран</div>
-      <div class="countries">
-        Россия<span class="dot">/</span>Италия<span class="dot">/</span>Грузия<span class="dot">/</span>Армения<span class="dot">/</span>Португалия<span class="dot">/</span>Индия<span class="dot">/</span>Китай<span class="dot">/</span>Мексика<span class="dot">/</span>Зимбабве
-      </div>
-    </section>
-
-    <section class="wrap reveal">
-      <div class="kicker">Программа · 19 сен — 1 окт</div>
-      <div class="vein">
-        <div class="stop">
-          <div class="st-day">День 1</div>
-          <div class="st-grid"><div class="st-date">19 сентября</div><div class="st-what">Открытие и жеребьёвка. Каждый мастер встречает свою глыбу — ту, с которой проживёт следующие тринадцать дней.</div></div>
-        </div>
-        <div class="stop">
-          <div class="st-day">Дни 2—11</div>
-          <div class="st-grid"><div class="st-date">20 — 29 сентября</div><div class="st-what">Работа в камне. Площадка открыта: подходите близко, смотрите, как из глыбы проступает форма, говорите с мастерами.</div></div>
-        </div>
-        <div class="stop">
-          <div class="st-day">День 12</div>
-          <div class="st-grid"><div class="st-date">30 сентября</div><div class="st-what">Последний день у камня. Тонкая доводка и полировка — отшлифованный мрамор начинает светиться изнутри.</div></div>
-        </div>
-        <div class="stop">
-          <div class="st-day">День 13</div>
-          <div class="st-grid"><div class="st-date">1 октября</div><div class="st-what">Закрытие фестиваля. Зрители выбирают любимую работу, а скульптуры занимают свои места в каньоне — теперь навсегда.</div></div>
+    <section class="section intro" id="about">
+      <div class="section-label">Рускеала это:</div>
+      <div class="intro-grid">
+        <article>
+          <h2>Мраморный каньон, подземные штольни и северная карельская природа</h2>
+        </article>
+        <div class="intro-text">
+          <p>Рукотворный памятник великому труду горных мастеров, окруженный северной карельской природой и хранящий трехвековую историю взаимодействия человека и камня.</p>
+          <p>Величественный мраморный каньон - изумрудная чаша, обрамленная отвесными стенами мрамора, где играют бликами вода и солнце.</p>
+          <p>Лабиринты подземных штолен и колонный зал, где капля за каплей веками создаются сталактиты и сталагмиты.</p>
         </div>
       </div>
     </section>
 
-    <section class="wrap reveal">
-      <div class="kicker">Место проведения</div>
-      <div class="split">
-        <h2 class="lead">Большой мраморный каньон</h2>
-        <p class="prose"><strong>Карелия · Россия.</strong> Отвесные белые стены, изумрудная вода на дне, эхо, что живёт между скал. Отсюда веками добывали мрамор для дворцов и соборов Петербурга — а теперь под этими же стенами высекают новые скульптуры. Добраться можно из Петрозаводска и Санкт-Петербурга.</p>
+    <section class="section excursions" id="excursions">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow dark">Экскурсии</p>
+          <h2>Маршруты парка</h2>
+        </div>
+        <a class="text-link" href="https://ruskeala.ru/tickets.html">Все экскурсии на основном сайте</a>
+      </div>
+      <div class="cards">
+        <article class="tour-card">
+          <img src="assets/canyon.jpg" alt="Мраморный каньон">
+          <div>
+            <h3>Мраморный каньон</h3>
+            <ul>
+              <li>Длительность 1 ч 15 мин</li>
+              <li>Дистанция 1600 м</li>
+              <li>Без возрастных ограничений</li>
+            </ul>
+            <p class="price">950р/чел</p>
+          </div>
+        </article>
+        <article class="tour-card">
+          <img src="assets/underground.jpg" alt="Подземная Рускеала">
+          <div>
+            <h3>Подземная Рускеала</h3>
+            <ul>
+              <li>Продолжительность до 60 мин.</li>
+              <li>Дистанция 850 м</li>
+              <li>Возрастное ограничение 7+</li>
+            </ul>
+            <p class="price">950р/чел</p>
+          </div>
+        </article>
+        <article class="tour-card">
+          <img src="assets/aerial.jpg" alt="Дорогой горных мастеров">
+          <div>
+            <h3>Дорогой горных мастеров</h3>
+            <ul>
+              <li>Длительность 1 ч 45 мин</li>
+              <li>Дистанция 2600 м</li>
+            </ul>
+            <p class="price">от 850 ₽</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="statement">
+      <div>
+        <p>Рускеальскому мрамору около 2 миллиардов лет.</p>
+        <span>Докембрийские породы были сформированы еще до появления сложных форм жизни на Земле.</span>
+      </div>
+    </section>
+
+    <section class="section food" id="food">
+      <div class="food-image">
+        <img src="assets/cafe.jpg" alt="Кафе в Горном Парке Рускеала">
+      </div>
+      <div class="food-content">
+        <p class="eyebrow dark">Организация питания</p>
+        <h2>Кафе на территории парка</h2>
+        <p>На выбор гостей - блюда европейской и карельской кухни, горячие и холодные напитки, свежая выпечка, завтраки и комплексные обеды.</p>
+        <ul class="food-list">
+          <li>Кафе «У Провала»</li>
+          <li>Кафе «Лето»</li>
+          <li>Кафе «Русколка»</li>
+          <li>Кафе «Кахвила»</li>
+          <li>Кафе «Колмас Бургер»</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section contacts" id="contacts">
+      <div>
+        <p class="eyebrow dark">Где мы находимся</p>
+        <h2>Республика Карелия, г. Сортавала, п. Рускеала, ул. Мраморная 1</h2>
+      </div>
+      <div class="contact-panel">
+        <a href="tel:+79216215050">+7 (921) 621-50-50</a>
+        <a href="mailto:ruskeala@kolmas.ru">ruskeala@kolmas.ru</a>
+        <span>Ежедневно: 10:00-20:00</span>
+        <span>Пн-пт: 10:00-17:00</span>
+        <div class="socials">
+          <a href="https://vk.com/ruskealapark">VK</a>
+          <a href="https://max.ru/id1007014533_biz">MAX</a>
+          <a href="https://t.me/ruskeala_official_bot">Telegram-bot</a>
+        </div>
       </div>
     </section>
   </main>
 
-  <section class="band reveal">
-    <div class="wrap">
-      <p class="quote">Скульптура уже спит внутри камня. <span class="em">Мастер лишь убирает лишнее.</span></p>
-      <div class="by">Манифест фестиваля</div>
-    </div>
-  </section>
-
-  <section class="wrap reveal">
-    <div class="kicker">До конца приёма заявок</div>
-    <div id="countdown" class="countdown" data-deadline="2026-08-31T23:59:00+03:00">
-      <div class="cd-unit"><span class="cd-num" data-d>—</span><span class="cd-lbl">дней</span></div>
-      <div class="cd-unit"><span class="cd-num" data-h>—</span><span class="cd-lbl">часов</span></div>
-      <div class="cd-unit"><span class="cd-num" data-m>—</span><span class="cd-lbl">минут</span></div>
-      <div class="cd-unit"><span class="cd-num" data-s>—</span><span class="cd-lbl">секунд</span></div>
-    </div>
-  </section>
-
-  <section class="cta wrap reveal">
-    <h2 class="lead">Приезжайте смотреть, как оживает камень. Или встаньте к своей глыбе.</h2>
-    <div class="actions">
-      <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSfEa94Naz3A-E2wT9M_oApigCol_mF6YtOM3S0eEpCa7s4uEQ/viewform" target="_blank" rel="noopener">Подать заявку</a>
-      <a class="ghost" href="#">Как добраться</a>
-    </div>
-  </section>
-
-  <footer class="wrap">
-    <div class="l"><span class="brand">Каменотёсы</span></div>
-    <div class="l">
-      <span>19 сен — 1 окт 2026</span>
-      <span>Большой мраморный каньон · Карелия · Россия</span>
-      <span>masters@ruskeala.site</span>
-    </div>
+  <footer class="footer">
+    <p>2025, Горный Парк Рускеала © Все права защищены.</p>
+    <a href="https://ruskeala.ru/">Основной сайт</a>
   </footer>
-
-  <script>
-    var els=document.querySelectorAll('.reveal');
-    if('IntersectionObserver' in window){
-      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -12% 0px'});
-      els.forEach(function(el){io.observe(el)});
-      setTimeout(function(){els.forEach(function(el){el.classList.add('in')})},2500);
-    }else{
-      els.forEach(function(el){el.classList.add('in')});
-    }
-
-    (function(){
-      var el=document.getElementById('countdown');
-      if(!el)return;
-      var deadline=new Date(el.getAttribute('data-deadline')).getTime();
-      var dEl=el.querySelector('[data-d]'),hEl=el.querySelector('[data-h]'),mEl=el.querySelector('[data-m]'),sEl=el.querySelector('[data-s]');
-      function pad(n){return n<10?'0'+n:''+n}
-      function tick(){
-        var diff=deadline-Date.now();
-        if(diff<=0){el.innerHTML='<div class="cd-done">Приём заявок завершён</div>';return;}
-        dEl.textContent=Math.floor(diff/86400000);
-        hEl.textContent=pad(Math.floor(diff%86400000/3600000));
-        mEl.textContent=pad(Math.floor(diff%3600000/60000));
-        sEl.textContent=pad(Math.floor(diff%60000/1000));
-      }
-      tick();setInterval(tick,1000);
-    })();
-  </script>
-
 </body>
 </html>
